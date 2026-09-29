@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Una carta</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#000;--fg:#fff}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;height:100%;background:#000;color:#fff;font-family:'VT323',ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+canvas{position:fixed;inset:0;width:100%;height:100%;image-rendering:pixelated;z-index:0}
+.scan{position:fixed;inset:0;z-index:5;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px)}
+#start{position:fixed;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:transparent;border:0;color:#fff;cursor:pointer;font-family:'Press Start 2P',monospace;padding:20px;text-align:center}
+#start .t{font-size:clamp(18px,5vw,34px);border:4px solid #fff;padding:22px 26px;animation:blink 1.2s steps(2) infinite;background:#000;box-shadow:8px 8px 0 #fff}
+#start .s{font-size:10px;opacity:.6;line-height:1.8}
+@keyframes blink{50%{opacity:.25}}
+#wrap{position:fixed;inset:0;z-index:3;display:none;overflow-y:auto;padding:calc(56px + env(safe-area-inset-top,0px)) 16px calc(40px + env(safe-area-inset-bottom,0px))}
+#wrap.on{display:block;animation:fade 2s steps(8) both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.card{max-width:720px;margin:0 auto;background:#000;border:4px solid #fff;box-shadow:8px 8px 0 #fff;padding:clamp(18px,4vw,36px)}
+.epi{font-family:'Press Start 2P',monospace;font-size:10px;line-height:1.9;opacity:.7;margin:0 0 6px}
+.date{font-family:'Press Start 2P',monospace;font-size:10px;margin:0 0 24px;border-bottom:2px dashed #fff;padding-bottom:14px}
+.card p{font-size:clamp(21px,3.4vw,25px);line-height:1.35;margin:0 0 1.1em;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.card p.epi,.card p.date{text-align:left;hyphens:none}
+.end{font-family:'Press Start 2P',monospace;font-size:12px;text-align:center;margin-top:28px;animation:blink 1.6s steps(2) infinite}
+#mute{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:6;display:none;background:#000;color:#fff;border:3px solid #fff;font-family:'Press Start 2P',monospace;font-size:10px;padding:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="scan"></div>
+<button id="start"><span class="t">PRESIONA AQUÍ</span><span class="s">▲ ACTIVA EL SONIDO ▲</span></button>
+<button id="mute">♪ ON</button>
+<div id="wrap"><div class="card">
+<p class="epi">“Antes de que nos olviden, haremos historia…”<br>CAIFANES</p>
+<p class="date">28 de septiembre de 2026</p>
+
+<p>Mientras la soledad me abraza en esta noche, aquí estoy nuevamente, quizás con frío, quizás asustado, quizás simplemente cansado, aunque no sé exactamente de qué, porque hay cansancios que no tienen un nombre concreto y uno solamente siente que algo dentro pesa demasiado. Quizás estoy cansado del mundo, de sus ruidos, de sus personas, de las historias ajenas en las que inevitablemente terminamos involucrándonos, cansado de intentar comprender a los demás, de intentar comprenderme a mí mismo, de levantarme cada día y continuar como si uno siempre supiera hacia dónde va. Hay días en los que no quisiera volver a salir de mi casa, días en los que incluso pensar en mi propia existencia se convierte en una pregunta demasiado pesada: ¿vale la pena todo esto?, ¿servirá de algo?, ¿qué quedará de mí cuando ya no esté? Hoy es uno de esos días.</p>
+
+<p>Llegué a casa cuando la noche ya había caído hacía mucho. Estaba agotado, el cuerpo cansado y la cabeza todavía más, y mientras comía, en medio de ese silencio que queda cuando termina el día, pensé en el lado amable de la existencia, en esas pequeñas cosas que, sin hacer demasiado ruido, consiguen que uno sienta que quizá no todo es tan inútil. Y pensé en ti. Pensé concretamente en lo que hiciste por mí, en que te tomaste el tiempo de pensar en mí, en que preparaste aquellas cosas, en que te ocupaste de tener esos detalles, en que hiciste el esfuerzo de moverte, de dedicarme tiempo y de llevar contigo algo que no tenías ninguna obligación de hacer. Puede que para ti hayan sido cosas pequeñas, quizás incluso insignificantes, pero para mí no lo fueron, porque hay una diferencia enorme entre recibir algo y sentir que alguien pensó en uno antes de hacerlo, y eso fue lo que recibí de ti: no solamente un detalle, sino la certeza de que, en algún momento de tu día, existí en tus pensamientos, que mientras estabas haciendo tus cosas hubo un instante en el que dijiste “esto puede gustarle”, “esto puede servirle”, “voy a llevarle esto”, y quizá no tengas idea de cuánto puede significar algo así para alguien que muchas veces siente que pasa por el mundo sin dejar demasiada huella.</p>
+
+<p>Por eso quería agradecerte de verdad. Gracias por haberte tomado ese tiempo, gracias por haber pensado en mí, gracias por haberte movido por mí aun cuando no era necesario, gracias por esos pequeños gestos que probablemente tú viste como algo sencillo y que yo recibí como algo mucho más grande, y gracias, sobre todo, porque nunca te lo pedí. Eso es quizá lo que más valoro. No fue algo que tuvieras que hacer, no fue una obligación, no fue algo que esperara de ti; fue simplemente algo que nació de ti, y quizá por eso terminó significando tanto para mí. Como te dije el día antes de que te fueras, nunca me ha gustado generar molestias, nunca me ha gustado que alguien tenga que cambiar sus planes, desplazarse o hacer un esfuerzo por mi causa, y por eso, sinceramente, con saber que llegabas bien, con saber que no te había pasado nada, era suficiente para mí. No necesitaba que hicieras nada más. Pero lo hiciste, y lo guardo. Quizás por eso esta noche puedo decirte, con toda la sinceridad que me queda: gracias. Dios te pague. Arigato. No sé si alguna vez comprenderás completamente lo que significó para mí, pero quería que lo supieras, porque algunas personas pasan por nuestra vida y dejan recuerdos enormes haciendo cosas enormes, mientras que otras lo hacen mediante pequeños gestos que, precisamente por ser pequeños, terminan quedándose en lugares donde nadie más puede verlos. Tú dejaste uno de esos.</p>
+
+<p>También quiero decirte que deseo profundamente que seas feliz, que algún día puedas mirar hacia atrás y sentir que todo aquello que te hizo daño no consiguió destruirte. Lamento las cosas que has tenido que atravesar, incluso aquellas que no conozco y aquellas que quizás nunca llegaré a conocer. Me gustaría comprenderte completamente, pero sé que eso es imposible, porque nadie puede entrar del todo en la historia de otra persona; podemos escucharla, acercarnos, intentar imaginarla, pero siempre habrá habitaciones dentro de cada ser humano cuya puerta solamente puede abrir quien las habita. Aun así, intento comprenderte, intento mirar el mundo desde el lugar desde el que tú lo miras, incluso cuando no consigo verlo de la misma manera. Y por todo lo que has vivido, quiero decirte algo que quizá tú misma olvidas algunas veces: eres valiente, no porque nunca hayas tenido miedo, sino porque has continuado a pesar de él. Quizás eso sea realmente la valentía: no vivir sin heridas, sino aprender a caminar con ellas sin permitir que definan completamente nuestro destino.</p>
+
+<p>Y mientras escribo esto, vuelvo inevitablemente a pensar en mi propia existencia, en lo extraño que es estar aquí, en lo poco que sabemos sobre el tiempo que nos fue concedido. Algún día yo tampoco estaré. No sé cuándo, no sé cómo, no sé qué habrá después. Quizás no haya absolutamente nada. Quizás solamente volvamos al silencio del que alguna vez salimos. Y, sin embargo, hay algo que quisiera dejarte. Si algún día ya no estoy y alguna vez vuelves a pensar en mí, no quiero que lo hagas solamente desde la tristeza. Recuérdame en cada escarabajo que veas golpeándose contra una luz. Ese era Ángel: un pequeño ser perdido en una noche demasiado grande, intentando alcanzar una luz que parecía estar tan cerca y, al mismo tiempo, tan lejos, golpeándose, cayendo, volviendo a levantarse, intentándolo otra vez. Quizás nunca comprendió que aquella luz no podía darle lo que estaba buscando, pero continuó. Y creo que yo fui un poco así. Quizás nunca encontré una respuesta definitiva para esta existencia, quizás nunca comprendí para qué estamos aquí, quizás nunca descubrí dónde termina esta oscuridad ni dónde comienza realmente la luz, pero la busqué, incluso cansado, incluso asustado, incluso en aquellas noches en las que no encontraba ninguna razón para hacerlo. Y tal vez eso sea lo único que importa: no haber encontrado la luz, sino haber seguido buscándola. Porque quizá la vida no consiste en encontrar un sentido perfecto, sino en encontrar pequeñas cosas que hagan soportable la ausencia de ese sentido: una canción, una conversación, un recuerdo, una persona, un detalle, alguien que se tomó el tiempo de pensar en nosotros, alguien que, sin saberlo, consiguió que una noche cualquiera fuera un poco menos fría.</p>
+
+<p>Por eso esta noche, entre todas las preguntas que no sé responder, hay una cosa que sí sé: me alegra haberte conocido, y me alegra que, en medio de esta existencia tan extraña y breve, hayas tenido un pensamiento para mí. Quizás eso sea suficiente. Quizás nunca necesitemos hacer cosas extraordinarias para demostrar que estuvimos aquí. Quizás basta con haberle hecho un poco menos pesada la noche a alguien. Quizás basta con que, cuando todo termine, exista una persona que pueda decir: “alguna vez hubo alguien que me hizo sentir acompañado”. Si alguna vez soy yo quien termina convertido en recuerdo, espero que sea así: no como una ausencia, sino como una pequeña luz, una de esas luces que aparecen durante un instante y que, aunque desaparezcan, dejan los ojos acostumbrados a la oscuridad. Porque al final todos vamos a desaparecer. Las fotografías perderán sus colores, las voces se apagarán, nuestros nombres serán pronunciados cada vez menos hasta que finalmente el mundo continúe como si nunca hubiéramos estado aquí. Pero quizás eso no signifique que nuestra existencia haya sido inútil. Quizás haber estado aquí ya fue algo: haber querido, haber sufrido, haber acompañado, haber recibido un detalle y haberlo guardado para siempre, haber sido, aunque solamente una vez, la razón por la que alguien sonrió. Quizás esa sea nuestra pequeña forma de vencer al olvido: no haciendo historia para el mundo, sino dejando una historia en el corazón de alguien.</p>
+
+<p>Y si alguna vez vuelves a ver aquel escarabajo golpeándose contra una lámpara, piensa en mí. No pienses que estaba perdido. Piensa que estaba buscando. Porque aunque nunca encontró la luz completa, nunca dejó de intentarlo. Y quizá eso sea lo que fui: un hombre buscando una luz que muchas noches creyó inexistente, pero que, de vez en cuando, encontró escondida en personas como tú. Por eso gracias: por el tiempo, por el esfuerzo, por haber pensado en mí, por haberte movido por mí, por esos pequeños detalles que quizás tú olvides con el tiempo y que yo, probablemente, recordaré durante mucho más. Y sobre todo, gracias por haberme demostrado, aunque fuera por un instante, que en medio de una existencia que tantas veces parece fría e incomprensible, todavía existen personas capaces de hacerla un poco más amable.</p>
+
+<p>Quizás nunca podamos vencer a la noche. Quizás nunca encontremos todas las respuestas. Quizás la luz siempre esté un poco más lejos de lo que quisiéramos. Pero mientras exista alguien dispuesto a buscarla, mientras exista alguien capaz de pensar en otro, de tener un detalle, de detenerse un instante para hacerle más llevadera la vida a alguien… quizás todavía valga la pena estar aquí. Y quizá, al final, eso sea todo lo que podemos dejar: no una gran historia, no un nombre eterno, sino la certeza de que alguna vez estuvimos aquí, de que alguna vez quisimos a alguien, y de que, durante un breve instante, hicimos que la noche de otra persona fuera un poco menos oscura.</p>
+<div class="end">■ FIN ■</div>
+</div></div>
+
+<script>
+// ---------- Fondo: estrellas + tetrominós ----------
+const cv=document.getElementById('c'),cx=cv.getContext('2d');
+let W,H,stars=[],blocks=[];
+const SH=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]],[[0,1,1],[1,1,0]],[[1,1,0],[0,1,1]]];
+function rs(){W=cv.width=Math.floor(innerWidth/3);H=cv.height=Math.floor(innerHeight/3);
+ stars=Array.from({length:110},()=>({x:Math.random()*W|0,y:Math.random()*H|0,p:Math.random()*6,s:Math.random()<.15?2:1}));
+ blocks=Array.from({length:9},()=>nb(true));}
+function nb(r){return{x:(Math.random()*W/5|0)*5,y:r?Math.random()*H:-20,sh:SH[Math.random()*7|0],v:.05+Math.random()*.12,f:Math.random()<.4}}
+function draw(t){cx.fillStyle='#000';cx.fillRect(0,0,W,H);
+ stars.forEach(s=>{cx.fillStyle='rgba(255,255,255,'+(.35+.65*Math.abs(Math.sin(t/900+s.p)))+')';cx.fillRect(s.x,s.y,s.s,s.s)});
+ // planeta pixelado
+ const px=W*.8,py=H*.2,R=Math.min(W,H)*.09;cx.strokeStyle='#fff';cx.fillStyle='#fff';
+ for(let y=-R;y<=R;y+=2)for(let x=-R;x<=R;x+=2){const d=x*x+y*y;if(d<R*R&&d>(R-2.5)*(R-2.5))cx.fillRect(px+x,py+y,2,2)}
+ for(let y=-R;y<=R;y+=4){const w=Math.sqrt(R*R-y*y);cx.globalAlpha=.35;cx.fillRect(px-w,py+y,w*2,1);cx.globalAlpha=1}
+ cx.fillRect(px-R*1.7|0,py|0,R*3.4|0,1);
+ blocks.forEach((b,i)=>{b.y+=b.v;cx.globalAlpha=.55;const u=5;
+  b.sh.forEach((row,j)=>row.forEach((c,k)=>{if(c){const X=b.x+k*u,Y=(b.y|0)+j*u;if(b.f)cx.fillRect(X,Y,u-1,u-1);else{cx.strokeRect(X+.5,Y+.5,u-2,u-2)}}}));
+  cx.globalAlpha=1;if(b.y>H+10)blocks[i]=nb(false)});
+ requestAnimationFrame(draw)}
+addEventListener('resize',rs);rs();requestAnimationFrame(draw);
+
+// ---------- Música triste 8-bit (Web Audio) ----------
+let ac,master,on=true,timer;
+const F=m=>440*Math.pow(2,(m-69)/12),B=.75;
+const mel=[[76,1.5],[74,.5],[72,2],  [69,2],[72,1],[69,1],  [67,1.5],[64,.5],[67,1],[72,1],  [71,2],[74,1],[71,1],
+           [76,1.5],[77,.5],[76,2],  [72,2],[69,2],         [67,1.5],[64,.5],[62,2],          [64,4]];
+const bass=[45,41,48,43,45,41,43,45];
+function tone(f,t,d,type,g){const o=ac.createOscillator(),v=ac.createGain();o.type=type;o.frequency.value=f;
+ v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.03);v.gain.exponentialRampToValueAtTime(.0008,t+d);
+ o.connect(v);v.connect(master);o.start(t);o.stop(t+d+.05)}
+function loop(t0){let t=t0;mel.forEach(([m,b])=>{tone(F(m),t,b*B*1.1,'square',.09);t+=b*B});
+ bass.forEach((m,i)=>{const bt=t0+i*4*B;tone(F(m),bt,4*B*.95,'triangle',.22);tone(F(m+12),bt+2*B,2*B*.9,'triangle',.08)});
+ const len=32*B;timer=setTimeout(()=>{if(ac)loop(ac.currentTime+.1)},(len-.5)*1000)}
+function startAudio(){ac=new(window.AudioContext||window.webkitAudioContext)();
+ master=ac.createGain();master.gain.value=.5;
+ const lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1800;
+ const dl=ac.createDelay();dl.delayTime.value=.42;const fb=ac.createGain();fb.gain.value=.4;dl.connect(fb);fb.connect(dl);
+ const wet=ac.createGain();wet.gain.value=.35;master.connect(lp);lp.connect(ac.destination);lp.connect(dl);dl.connect(wet);wet.connect(ac.destination);
+ loop(ac.currentTime+.2)}
+
+document.getElementById('start').onclick=e=>{
+ e.currentTarget.style.display='none';
+ try{startAudio()}catch(_){}
+ document.getElementById('wrap').classList.add('on');
+ document.getElementById('mute').style.display='block';
+};
+document.getElementById('mute').onclick=e=>{on=!on;if(ac){on?ac.resume():ac.suspend()}e.target.textContent=on?'♪ ON':'♪ OFF'};
+</script>
+</body>
+</html>
